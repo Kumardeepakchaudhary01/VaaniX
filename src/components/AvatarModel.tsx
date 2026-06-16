@@ -88,8 +88,8 @@ export default function AvatarModel({ isSpeaking, emotion = "neutral" }: { isSpe
 
             // Emotion mapping
             const setMorph = (name: string, value: number) => {
-                const idx = mesh.morphTargetDictionary[name];
-                if (idx !== undefined) {
+                const idx = mesh.morphTargetDictionary?.[name];
+                if (idx !== undefined && mesh.morphTargetInfluences) {
                     mesh.morphTargetInfluences[idx] = THREE.MathUtils.lerp(mesh.morphTargetInfluences[idx], value, 0.1);
                 }
             };
